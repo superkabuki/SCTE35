@@ -12,6 +12,11 @@ from .packetdata import PacketData
 from .streamtypes import streamtype_map
 from .stuff import blue, clean, ERR, print2
 
+try:
+    from .srtscte35 import srt_parse
+    SRT=True
+except:
+    SRT=False
 
 def no_op(cue):
     """
@@ -158,7 +163,7 @@ class Stream(Based):
         strm.decode()
 
         """
-        if isinstance(tsdata, str):
+        if isinstance(tsdata, str) and  not tsdata.startswith('srt://'):
             self._tsdata = reader(tsdata)
         else:
             self._tsdata = tsdata
@@ -258,12 +263,18 @@ class Stream(Based):
     def _decode2cues(self, chunk, func):
         _ = [func(cue) for cue in self._mk_pkts(chunk) if cue]
 
+    def decode_srt(self,func):
+        if SRT:
+            srt_parse(self._tsdata, self)
+             
     def decode(self, func=show_cue):
         """
         Stream.decode reads self.tsdata to find SCTE35 packets.
         func can be set to a custom function that accepts
         a threefive.Cue instance as it's only argument.
         """
+        if self._tsdata.startswith('srt://'):
+            self.decode_srt(func=func)
         num_pkts = 1400
         _ = [
             self._decode2cues(chunk, func)
