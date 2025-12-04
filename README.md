@@ -7,11 +7,41 @@
 
 <BR>  _Support for SRT parsing will be included in  v3.0.65._ ~Adrian <BR>
 
-<BR> _checkout [SRTKabuki](https://github.com/superkabuki/srtkabuki)_
+<BR> _checkout [SRTfu](https://github.com/superkabuki/srtfu)_
 
 
-# [ [Latest threefive version is v3.0.63](v3063.md) ]
+# Latest threefive version is v3.0.65
+* fixed some bugs in the cli related to piping in.
+* fixed some other minor bugs.
+* shoehorned in __srt__ support using [SRTfu](https://github.com/superkabuki/srtfu)_ mark it __experimental__
+* the __cii tool__ and the __Stream class__ will now __accept srt urls as input__. Only __live__ mode is currently supported.
 
+* __cli tool__
+```py3
+a@fu:~/SCTE35$ threefive srt://192.168.12.247:4201
+startup: ✓
+ipv4int: ✓
+create_socket: ✓
+setsockflag: ✓
+setflags: ✓
+setsockflag: ✓
+setflags: ✓
+setsockflag: ✓
+setflags: ✓
+connect: ✓
+...
+```
+
+* __Stream class__
+```py3
+a@fu:~/SCTE35$ pypy3
+Python 3.9.16 (7.3.11+dfsg-2+deb12u3, Dec 30 2024, 22:36:23)
+[PyPy 7.3.11 with GCC 12.2.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>>> from threefive import Stream
+>>>> strm =Stream('srt://192.168.12.247:4201')
+>>>> strm.decode()
+```
 
 # Q. `Who uses threefive?` 
 
