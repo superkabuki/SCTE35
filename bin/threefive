@@ -46,7 +46,7 @@ HELP = f"""
    {U}{BLUE} mpegts {U}  {U}{BLUE} base64 {NORM} threefive https://example.com/video.ts  base64
    {U}{BLUE} base64 {U}  {U}{BLUE} hex    {NORM} threefive '/DAWAAAAAAAAAP/wBQb+AKmKxwAACzuu2Q==' hex
    {U}{BLUE} xmlbin  {U} {BLUE} int    {NORM} threefive   < xmlbin.xml int
-   {U}{BLUE} xml    {U}  {BLUE} json   {NORM} threefive   < xml.xml 
+   {U}{BLUE} xml    {U}  {BLUE} json   {NORM} threefive   < xml.xml
    {U}{BLUE} mpegts {U}  {BLUE} json   {NORM} threefive video.ts
    {U}{BLUE} json{U}    {BLUE}  xml    {NORM} threefive  < json.json  xml
 
@@ -117,11 +117,14 @@ def mk_sidecar(cue):
     """
     mk_sidecar generates a sidecar file with the SCTE-35 Cues
     """
-    pts = 0.0
+    rollover = 95443.717678
+    pts = 0.001
     with open("sidecar.txt", "a") as sidecar:
         cue.show()
         if cue.packet_data.pts:
             pts = cue.packet_data.pts
+        if cue.command.pts_time:
+            pts = (cue.command.pts_time + cue.info_section.pts_adjustment) % rollover
         data = f"{pts},{cue.encode()}\n"
         sidecar.write(data)
 
