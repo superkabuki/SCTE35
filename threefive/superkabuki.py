@@ -90,7 +90,7 @@ class SuperKabuki(SixFix):
             "--time_signals",
             action="store_const",
             default=False,
-         #   const=True,
+            const=True,
             help="Flag to insert Time Signal cues at iframes.",
         )
 
@@ -208,6 +208,7 @@ class SuperKabuki(SixFix):
         cue.command.time_specified_flag = True
         cue.command.pts_time = pts
         cue.encode()
+        print2(f"inserted @{pts} - {cue.encode()}")
         cue.decode()
         nbin = NBin()
         nbin.add_int(71, 8)  # sync byte
