@@ -273,7 +273,7 @@ class Stream(Based):
         func can be set to a custom function that accepts
         a threefive.Cue instance as it's only argument.
         """
-        if self._tsdata.startswith('srt://'):
+        if isinstance(self._tsdata,str) and self._tsdata.startswith('srt://'):
             self.decode_srt(func=func)
         num_pkts = 1400
         _ = [
