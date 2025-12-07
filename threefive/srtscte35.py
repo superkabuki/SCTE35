@@ -1,14 +1,23 @@
-#!/usr/bin/env python3
+"""
+srtscte35.py
+helper functions for parsing srt streams
+used by threefive.Stream class
+"""
 
 import sys
 import time
-from srtfu import datagramer
-# from .stream import Stream
 
+try:
+    from srtfu import datagramer
+except:
+    print("srtfu is not available")
 
-PACKETSIZE = 188
-SYNC_BYTE = b"G"
+PKTSZ = 188
+ROLLOVER = 95443.717678
+SIDECAR = "sidecar.txt"
 SPIN = True
+SYNC_BYTE = b"G"
+ZERO = b"\x00"
 
 
 def has_sync_byte(stuff):
@@ -22,7 +31,7 @@ def at_least_a_packet(stuff):
     """
     at_least_a_packet  check if stuff  is at least PACKETSIZE
     """
-    return len(stuff) >= PACKETSIZE
+    return len(stuff) >= PKTSZ
 
 
 def calculate_sidecar_pts(scte35):
@@ -30,12 +39,11 @@ def calculate_sidecar_pts(scte35):
     calculate_sidecar_pts determine pts
     for the sidecar file entry.
     """
-    rollover = 95443.717678
-    pts = 0.001
+    pts = 0.001  # 0.0 may cause a problem.
     if scte35.packet_data.pts:
         pts = scte35.packet_data.pts
     if scte35.command.pts_time:
-        pts = (scte35.command.pts_time + scte35.info_section.pts_adjustment) % rollover
+        pts = (scte35.command.pts_time + scte35.info_section.pts_adjustment) % ROLLOVER
     return pts
 
 
@@ -45,19 +53,19 @@ def add_scte35_to_sidecar(scte35):
     generates a sidecar file with the
     SCTE-35 Cues
     """
-    scte35.show()
     pts = calculate_sidecar_pts(scte35)
     data = f"{pts},{scte35.encode()}\n"
-    with open("sidecar.txt", "a") as sidecar:
+    with open(SIDECAR, "a") as sidecar:
         sidecar.write(data)
 
 
-def check_for_scte35(packet,strm):
+def check_for_scte35(packet, strm):
     """
-    check a packet for scte35 
+    check a packet for scte35
     """
     scte35 = strm._parse(packet)
     if scte35:
+        scte35.show()
         add_scte35_to_sidecar(scte35)
 
 
@@ -67,21 +75,7 @@ def parse_packet(packet, strm):
     """
     if at_least_a_packet(packet):
         if has_sync_byte(packet):
-            check_for_scte35(packet,strm)
-
-
-def packetize(datagram):
-    """
-    packetize split datagram into mpegts packets
-    """
-    return [datagram[i : i + PACKETSIZE] for i in range(0, len(datagram), PACKETSIZE)]
-
-
-def parse_datagram(datagram, strm):
-    """
-    parse_datagram test datagram and parse.
-    """
-    _ = [parse_packet(packet, strm) for packet in packetize(datagram)]
+            check_for_scte35(packet, strm)
 
 
 def spinner(lc):
@@ -96,16 +90,29 @@ def spinner(lc):
         lc += 1
     return lc
 
-def srt_parse(srt_url, strm):
-    lc=0
+
+def big_fat(bigfatbuff, strm):
+    """
+    big_fat  trims bigfatbuff to start on a sync byte,
+    and slices off a packet to be parsed.
+
+    """
+    bigfatbuff = bigfatbuff[bigfatbuff.index(SYNC_BYTE) :]
+    packet, bigfatbuff = bigfatbuff[:PKTSZ], bigfatbuff[PKTSZ:]
+    parse_packet(packet, strm)
+    return bigfatbuff, strm
+
+
+def srt_parse2(srt_url, strm):
+    """
+    srt_parse parse srt stream for SCTE35
+    strm is a Stream instance
+    srt_url  like srt://1.2.3.4:9000
+    """
+    lc = 0
+    bigfatbuff = b""
     for datagram in datagramer(srt_url):
         lc = spinner(lc)
-        parse_datagram(datagram, strm)    
-
-
-if __name__ == "__main__":
-    lc = 0
-#    strm = Stream(tsdata=None)
-    for datagram in datagramer(sys.argv[1]):
-        lc = spinner(lc)
-        parse_datagram(datagram, strm)
+        bigfatbuff += datagram.rstrip(ZERO)
+        while SYNC_BYTE in bigfatbuff:
+            bigfatbuff, strm = big_fat(bigfatbuff, strm)
