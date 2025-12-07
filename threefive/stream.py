@@ -13,7 +13,7 @@ from .streamtypes import streamtype_map
 from .stuff import blue, clean, ERR, print2
 
 try:
-    from .srtscte35 import srt_parse
+    from .srtscte35 import srt_parse2
     SRT=True
 except:
     SRT=False
@@ -263,9 +263,9 @@ class Stream(Based):
     def _decode2cues(self, chunk, func):
         _ = [func(cue) for cue in self._mk_pkts(chunk) if cue]
 
-    def decode_srt(self,func):
+    def decode_srt(self):
         if SRT:
-            srt_parse(self._tsdata, self)
+            srt_parse2(self._tsdata, self)
              
     def decode(self, func=show_cue):
         """
@@ -274,7 +274,7 @@ class Stream(Based):
         a threefive.Cue instance as it's only argument.
         """
         if isinstance(self._tsdata,str) and self._tsdata.startswith('srt://'):
-            self.decode_srt(func=func)
+            self.decode_srt()
         num_pkts = 1400
         _ = [
             self._decode2cues(chunk, func)
