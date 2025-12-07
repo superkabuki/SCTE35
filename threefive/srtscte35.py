@@ -73,9 +73,15 @@ def parse_packet(packet, strm):
     """
     parse_packet check mpegts packet for scte35
     """
+    if verify_packet(packet):
+        check_for_scte35(packet, strm)
+
+
+def verify_packet(packet):
     if at_least_a_packet(packet):
         if has_sync_byte(packet):
-            check_for_scte35(packet, strm)
+            return True
+    return False
 
 
 def spinner(lc):
@@ -103,6 +109,16 @@ def big_fat(bigfatbuff, strm):
     return bigfatbuff, strm
 
 
+def parse_datagram(datagram, bigfatbuff,strm):
+    """
+    parse datagram parse datagram into bigfatbuff
+    """
+    bigfatbuff += datagram.rstrip(ZERO)
+    while SYNC_BYTE in bigfatbuff:
+        bigfatbuff, strm = big_fat(bigfatbuff, strm)
+    return bigfatbuff,strm    
+
+
 def srt_parse2(srt_url, strm):
     """
     srt_parse parse srt stream for SCTE35
@@ -113,6 +129,5 @@ def srt_parse2(srt_url, strm):
     bigfatbuff = b""
     for datagram in datagramer(srt_url):
         lc = spinner(lc)
-        bigfatbuff += datagram.rstrip(ZERO)
-        while SYNC_BYTE in bigfatbuff:
-            bigfatbuff, strm = big_fat(bigfatbuff, strm)
+        bigfatbuff,strm= parse_datagram(datagram, bigfatbuff,strm)
+
