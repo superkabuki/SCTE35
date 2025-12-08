@@ -1,4 +1,4 @@
-# threefive is the Highest Rated SCTE-35 Parser. Ever.
+# [ threefive is the Highest Rated SCTE-35 Parser. Ever. ]
 
 
 # Q. `Who uses threefive?` 
@@ -17,7 +17,7 @@ ___
 <BR> _checkout [SRTfu](https://github.com/superkabuki/srtfu)_
 
 ---
-# Latest threefive version is v3.0.67
+# [ Latest threefive version is v3.0.67 ]
 * live SRT streaming support has been fully integrated in threefive v3.0.67, no special handling required.
 * SRT support requires installing libsrt. Yeah, I got a [script](https://raw.githubusercontent.com/superkabuki/SRTfu/refs/heads/main/install-libsrt.sh) that will do that for you.
 
