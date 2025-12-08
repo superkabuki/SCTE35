@@ -12,11 +12,6 @@ from .packetdata import PacketData
 from .streamtypes import streamtype_map
 from .stuff import blue, clean, ERR, print2
 
-try:
-    from srtfu.funcs import packetizer
-    SRT=True
-except:
-    SRT=False
 
 def no_op(cue):
     """
@@ -163,9 +158,8 @@ class Stream(Based):
         strm.decode()
 
         """
-        self.use_srt=False
-        self.chk_srt(tsdata)
-        if not isinstance(tsdata, str) or self.use_srt:
+
+        if not isinstance(tsdata, str):
             self._tsdata = tsdata
         else:
             self._tsdata = reader(tsdata)
@@ -180,9 +174,6 @@ class Stream(Based):
         self.pmt_pkt = None
         self.pat_pkt = None
 
-    def chk_srt(self,tsdata):
-        if SRT & isinstance(tsdata, str) & tsdata.startswith('srt://'):
-            self.use_srt=True
 
     @staticmethod
     def as_90k(ticks):
@@ -256,8 +247,6 @@ class Stream(Based):
         """
         iter_pkts iterates a mpegts stream into packets
         """
-        if self.use_srt:
-            return packetizer(self._tsdata)
         if self._find_start():
             return iter(partial(self._tsdata.read, self.PACKET_SIZE * num_pkts), b"")
         return False
@@ -270,7 +259,7 @@ class Stream(Based):
 
     def _decode2cues(self, chunk, func):
         _ = [func(cue) for cue in self._mk_pkts(chunk) if cue]
-         
+
     def decode(self, func=show_cue):
         """
         Stream.decode reads self.tsdata to find SCTE35 packets.
@@ -278,8 +267,7 @@ class Stream(Based):
         a threefive.Cue instance as it's only argument.
         """
         num_pkts = 1400
-        _ = [
-            self._decode2cues(chunk, func)
+        _ = [self._decode2cues(chunk, func)
             for chunk in self.iter_pkts(num_pkts=num_pkts)
         ]
         return False
