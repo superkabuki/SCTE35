@@ -163,10 +163,12 @@ class Stream(Based):
         strm.decode()
 
         """
-        if isinstance(tsdata, str) and  not tsdata.startswith('srt://'):
-            self._tsdata = reader(tsdata)
-        else:
+        self.use_srt=False
+        self.chk_srt(tsdata)
+        if not isinstance(tsdata, str) or self.use_srt:
             self._tsdata = tsdata
+        else:
+            self._tsdata = reader(tsdata)
         self.show_null = show_null
         self.start = {}
         self.info = False
@@ -177,6 +179,10 @@ class Stream(Based):
         self.pmt_count = 0
         self.pmt_pkt = None
         self.pat_pkt = None
+
+    def chk_srt(self,tsdata):
+        if SRT & isinstance(tsdata, str) & tsdata.startswith('srt://'):
+            self.use_srt=True
 
     @staticmethod
     def as_90k(ticks):
@@ -250,6 +256,8 @@ class Stream(Based):
         """
         iter_pkts iterates a mpegts stream into packets
         """
+        if self.use_srt:
+            return packetizer(self._tsdata)
         if self._find_start():
             return iter(partial(self._tsdata.read, self.PACKET_SIZE * num_pkts), b"")
         return False
@@ -262,22 +270,13 @@ class Stream(Based):
 
     def _decode2cues(self, chunk, func):
         _ = [func(cue) for cue in self._mk_pkts(chunk) if cue]
-
-    def decode_srt(self, func=show_cue):
-        if SRT:
-            for packet in packetizer(self._tsdata):
-                cue = self._parse(packet)
-                if cue:
-                    func(cue)
-             
+         
     def decode(self, func=show_cue):
         """
         Stream.decode reads self.tsdata to find SCTE35 packets.
         func can be set to a custom function that accepts
         a threefive.Cue instance as it's only argument.
         """
-        if isinstance(self._tsdata,str) and self._tsdata.startswith('srt://'):
-            self.decode_srt()
         num_pkts = 1400
         _ = [
             self._decode2cues(chunk, func)
@@ -517,7 +516,6 @@ class Stream(Based):
     def _parse(self, pkt):
         cue = False
         pid = self._parse_info(pkt)
-        # print('PID ==> ', pid)
         if self._pusi_flag(pkt):
             self._chk_pts(pkt, pid)
             if pid in self.pids.pcr:
