@@ -13,7 +13,7 @@ from .streamtypes import streamtype_map
 from .stuff import blue, clean, ERR, print2
 
 try:
-    from .srtscte35 import srt_parse2
+    from srtfu.funcs import packetizer
     SRT=True
 except:
     SRT=False
@@ -263,9 +263,12 @@ class Stream(Based):
     def _decode2cues(self, chunk, func):
         _ = [func(cue) for cue in self._mk_pkts(chunk) if cue]
 
-    def decode_srt(self):
+    def decode_srt(self, func=show_cue):
         if SRT:
-            srt_parse2(self._tsdata, self)
+            for packet in packetizer(self._tsdata):
+                cue = self._parse(packet)
+                if cue:
+                    func(cue)
              
     def decode(self, func=show_cue):
         """
