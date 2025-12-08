@@ -5,10 +5,12 @@ import setuptools
 with open("README.md", "r", encoding="utf-8") as fh:
     readme = fh.read()
 
+import time
 from threefive.version import version
 print("SRT support Requires installing libsrt")
 print("Use the package manager from your operating system")
 print("or try https://raw.githubusercontent.com/superkabuki/SRTfu/refs/heads/main/install-libsrt.sh")
+time.sleep(5)
 
 setuptools.setup(
     name="threefive",
@@ -23,7 +25,7 @@ setuptools.setup(
         "pyaes",
         "srtfu >= 0.0.7",
     ],
-    scripts=["bin/threefive,],
+    scripts=["bin/threefive",],
     packages=setuptools.find_packages(),
     classifiers=[
         "License :: OSI Approved :: Sleepycat License",
