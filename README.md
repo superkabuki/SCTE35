@@ -7,19 +7,19 @@
 ### _threefive has been pip installed [over one million times](https://clickpy.clickhouse.com/dashboard/threefive)_
 ___
 
+ _SRT support in threefive?  It will never happen, that threefive guy can't even spell SRT...._ ~ Linda
+ <br>
+
+
 <img width="851" height="494" alt="image" src="https://github.com/user-attachments/assets/514cafa2-6c09-40e3-a738-f4f6d30edd9c" />
 
- _SRT support in threefive?  It will never happen, the threefive guy can't even spell SRT...._ ~ Linda
- <br>
- <BR>
-<BR>  _Support for SRT parsing will be included in  v3.0.65._ ~Adrian <BR>
 
 <BR> _checkout [SRTfu](https://github.com/superkabuki/srtfu)_
 
-
+---
 # Latest threefive version is v3.0.67
 * live SRT streaming support has been fully integrated in threefive v3.0.67, no special handling required.
-* SRT support requires installing libsrt. 
+* SRT support requires installing libsrt. Yeah, I got a [script](https://raw.githubusercontent.com/superkabuki/SRTfu/refs/heads/main/install-libsrt.sh) that will do that for you.
 
 # [ Features ]
 <samp>
