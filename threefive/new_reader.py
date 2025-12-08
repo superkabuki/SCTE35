@@ -10,14 +10,23 @@ import sys
 import urllib.request
 from .stuff import blue, ERR, pif
 
+SRT = False
+try:
+    from srtfu import SRTfu, SRTO_TRANSTYPE, SRT_LIVE, SRTO_RCVSYN, SRTO_RCVBUF
+    SRT = True
+except:
+    pass
+
 TIMEOUT = 60
 
-CORS={"Origin": "null",
-                    "DNT": "1",
-                    "Connection":"keep-alive",
-                    "Sec-Fetch-Dest": "empty",
-                    "Sec-Fetch-Mode": "cors",
-                    "Sec-Fetch-Site": "cross-site",}
+CORS = {
+    "Origin": "null",
+    "DNT": "1",
+    "Connection": "keep-alive",
+    "Sec-Fetch-Dest": "empty",
+    "Sec-Fetch-Mode": "cors",
+    "Sec-Fetch-Site": "cross-site",
+}
 
 
 class Socked(socket.socket):
@@ -26,20 +35,20 @@ class Socked(socket.socket):
     and defines a read() method to maintain the interface.
     """
 
-    def read(self, bites):
+    def read(self, bites=1316):
         """
         read is an alias for socket.socket.recv
         """
         return self.recv(bites)
 
 
-def corsreader(uri,headers={}):
+def corsreader(uri, headers={}):
     """
     corsreader calls reader with CORS headers
     set to allow all.
     """
-    all_headers = {**CORS,**headers}
-    return reader(uri,headers=all_headers)
+    all_headers = {**CORS, **headers}
+    return reader(uri, headers=all_headers)
 
 
 def reader(uri, headers={}):
@@ -77,16 +86,30 @@ def reader(uri, headers={}):
     # Multicast
     if uri.startswith("udp://@"):
         return _open_mcast(uri)
-    # Udp
+    # UDP
     if uri.startswith("udp://"):
         return _open_udp(uri)
-    # Http(s)
+    # HTTP(S)
     if uri.startswith("http"):
         req = urllib.request.Request(uri, headers=headers)
         return urllib.request.urlopen(req)
+    # SRT
+    if SRT and uri.startswith("srt"):
+        return do_srt(uri)
     # File
     return open(uri, "rb")
 
+
+def do_srt(srt_url):
+    """
+    do_srt handle Secure Reliable Transport live streams
+    """
+    preflags ={SRTO_TRANSTYPE: SRT_LIVE,
+                       SRTO_RCVSYN: 1,
+                       SRTO_RCVBUF: 32768000,}
+    srtf=SRTfu(srt_url, preflags)
+    srtf.connect()
+    return srtf
 
 def lshiftbuf(socked):
     shift = 2
