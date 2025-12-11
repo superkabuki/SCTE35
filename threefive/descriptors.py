@@ -447,7 +447,7 @@ class SegmentationDescriptor(SpliceDescriptor):
         """
         Create a Node describing a SegmentationDescriptor
         """
-        sseici=self.segmentation_event_id_compliance_indicator
+        sseici = self.segmentation_event_id_compliance_indicator
 
         sd_attrs = {
             "segmentation_event_id": pif(self.segmentation_event_id),
