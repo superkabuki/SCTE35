@@ -51,7 +51,7 @@ def bump_pts_time(cue, bump):
     bumpme = cue.command.pts_time + cue.info_section.pts_adjustment + bump
     cue.info_section.pts_adjustment = 0.0
     if bumpme < 0.0:
-        bumpme= ROLLOVER + bumpme
+        bumpme = ROLLOVER + bumpme
     cue.command.pts_time = bumpme % ROLLOVER
 
 
