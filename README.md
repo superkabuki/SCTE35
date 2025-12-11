@@ -1,4 +1,5 @@
-# [ threefive is the Highest Rated SCTE-35 Parser. Ever. ]
+# [ threefive is the Highest Rated SCTE35 Parser. ]
+# [ Ever. ]
 
 
 # Q. `Who uses threefive?` 
