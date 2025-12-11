@@ -285,7 +285,7 @@ class SpliceInsert(TimeSignal):
         if not self.break_duration:
             red("break_duration is not set")
         else:
-        ##            self.break_duration = self.as_90k(self.break_duration_ticks)
+            ##            self.break_duration = self.as_90k(self.break_duration_ticks)
             nbin.add_int(self.as_ticks(self.break_duration), 33)
 
     def xml(self, ns="scte35"):
