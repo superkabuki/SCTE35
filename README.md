@@ -1,7 +1,7 @@
-# [ threefive is the Highest Rated SCTE35 Parser ]  [ Ever ]
+# [ threefive is the #1 SCTE35 Parser on the Planet ]  
 
-
-### _threefive has been pip installed [over one million times](https://clickpy.clickhouse.com/dashboard/threefive)_
+* __threefive__ has been __profiled and benchmarked__ every way possible. __this is some of the fastest python code available.__
+* If you do __SCTE35__, you want to __use threefive__. 
 ___
 
 ### [ threefive now supports SRT](srt.md)
@@ -61,6 +61,9 @@ ___
 </samp>
 
 ## [ Install ]
+
+### _threefive has been pip installed [over one million times](https://clickpy.clickhouse.com/dashboard/threefive)_ 
+
 * [Install](#install)
 
 ## [ Quick Start ] 
