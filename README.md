@@ -4,7 +4,8 @@
 ### _threefive has been pip installed [over one million times](https://clickpy.clickhouse.com/dashboard/threefive)_
 ___
 
-<img width="851" height="494" alt="image" src="https://github.com/user-attachments/assets/514cafa2-6c09-40e3-a738-f4f6d30edd9c" />
+### [ threefive now supports SRT](srt.md)
+[<img width="851" height="494" alt="image" src="https://github.com/user-attachments/assets/514cafa2-6c09-40e3-a738-f4f6d30edd9c" />](srt.md)
 
 
 <BR> _checkout [SRTfu](https://github.com/superkabuki/srtfu)_
@@ -19,6 +20,8 @@ ___
 
 * __Decode SCTE-35__  MPEGTS ✔ Base64 ✔ Bytes ✔ Hex ✔ Integers ✔ JSON ✔ XML ✔ XML+Binary ✔ DASH ✔  Dicts ✔  
 * __Encodes SCTE-35__ MPEGTS ✔ Base64 ✔ Bytes ✔ Hex ✔ Integers ✔ JSON ✔ XML ✔ XML+Binary ✔
+
+* __threefive parses SCTE35 from Pipes, Files,  HTTP(s), Multicast, UDP, and now SRT__.  
 
 * __Automatic AES decryption__ for __MPEGTS__ and __HLS__. ✔
 
