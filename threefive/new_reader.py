@@ -13,6 +13,7 @@ from .stuff import blue, ERR, pif
 SRT = False
 try:
     from srtfu import SRTfu, SRTO_TRANSTYPE, SRT_LIVE, SRTO_RCVSYN, SRTO_RCVBUF
+
     SRT = True
 except:
     pass
@@ -104,12 +105,15 @@ def do_srt(srt_url):
     """
     do_srt handle Secure Reliable Transport live streams
     """
-    preflags ={SRTO_TRANSTYPE: SRT_LIVE,
-                       SRTO_RCVSYN: 1,
-                       SRTO_RCVBUF: 32768000,}
-    srtf=SRTfu(srt_url, preflags)
+    preflags = {
+        SRTO_TRANSTYPE: SRT_LIVE,
+        SRTO_RCVSYN: 1,
+        SRTO_RCVBUF: 32768000,
+    }
+    srtf = SRTfu(srt_url, preflags)
     srtf.connect()
     return srtf
+
 
 def lshiftbuf(socked):
     shift = 2
