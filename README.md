@@ -5,7 +5,7 @@
 ___
 
 ### [ threefive now supports SRT](srt.md)
-[<img width="851" height="494" alt="image" src="https://github.com/user-attachments/assets/514cafa2-6c09-40e3-a738-f4f6d30edd9c" />](srt.md)
+[<img width="825" height="250" alt="threefive now has SRT support" src="https://github.com/user-attachments/assets/514cafa2-6c09-40e3-a738-f4f6d30edd9c" />](srt.md)
 
 
 <BR> _checkout [SRTfu](https://github.com/superkabuki/srtfu)_
@@ -37,12 +37,12 @@ set __segmentation_upid_length__= __0__ <BR>
 set __segmentation_upid_type__= __0__
 ___
 
-<img width="1030" height="198" alt="image" src="https://github.com/user-attachments/assets/864ce688-b087-4d1e-9062-2d4f2b4f7dcf" />
+<img width="825" height="75" alt="image" src="https://github.com/user-attachments/assets/864ce688-b087-4d1e-9062-2d4f2b4f7dcf" />
 
 
 # [ Documentation ]
 	
-* [__Install__](#install) 
+* [__Install__](#-install-) 
 * [SCTE-35 Decoding __Quick Start__ ](#quick-start) _threefive makes decoding SCTE-35 fast and easy_
 * [SCTE-35 __Examples__](https://github.com/superkabuki/threefive/tree/main/examples) _examples of all kinds of SCTE-35 stuff_
 * [SCTE-35 __Cli__](#the-cli-tool) _decode SCTE-35 on the command line_
@@ -61,251 +61,80 @@ ___
 * [Make your __threefive__ script an executable with __cython__](cython.md) _threefive is compatible with all python tools_
 </samp>
 
-## [ Install ]
 
-### _threefive has been pip installed [over one million times](https://clickpy.clickhouse.com/dashboard/threefive)_ 
+##  [ Install ]
+* python3 via pip
+```rebol
+python3 -mpip install threefive
+```
+* pypy3 
+```rebol
+pypy3 -mpip install threefive
+```
+* from the git repo
+```rebol
+git clone https://github.com/superkabuki/scte35.git
+cd threefive
+make install
+```
+___
 
-* [Install](#install)
+##  [ Using the library ]
+
+
 
 ## [ Quick Start ] 
 
 
-* Here's how to decode these SCTE-35 formats with threefive.
-* This covers both the Cli tool and library.
+* Most of the stuff in threefive all woerks the sme way.
 
- <details><summary>
+### [cli tool]
 
-### mpegts 
+* The default action is to read a input and write a SCTE-35 output.
 
- </summary>
- 
-* MPEGTS streams can be  Files, Http(s), Multicast, UDP Unicast, or  stdin. 
+  *  Inputs  mpegts, base64, hex, json,and xml, and xmlbin.
 
-* __cli__
-```js
-threefive https://example.com/video.ts
-```
-* wildcards work too.
-```js
-threefive /mpegts/*.ts
-```
+  *  Outputs base64, bytes, hex, int, json, xml, and xmlbin.
 
-* __lib__
-```py3
+  *  SCTE35 can read from  strings, files, stdin, http(s), multicast,srt and udp.
 
-from threefive import Stream
-stream = Stream('https://example.com/video.ts')
-stream.decode()
+|Input     |Output     |Example                                                  |
+|----------|-----------|---------------------------------------------------------|
+|__mpegts__|__base64__ | threefive https://example.com/video.ts  __base64__      |
+|          |           |                                                         |
+|__base64__|__hex__    | threefive '/DAWAAAAAAAAAP/wBQb+AKmKxwAACzuu2Q==' __hex__|
+|          |           |                               |                     |
+|__xmlbin__|__int__    | threefive   < xmlbin.xml __int__                        |
+|          |           |                                                         |
+|__xml__   |__json__   | threefive   < xml.xml                                   |
+|          |           |                                                         |
+|__mpegts__|__xml+bin__| threefive video.ts __xmlbin__                           |
+|          |   |   |                                                     |
+|__json__  |__xml__    | threefive  < json.json  __xml__                         |
+|          |           |                                                         |
 
-```
-
-</details>
-
-
-
-<details><summary>
-
-### Base64
-
-</summary>
-
-* __cli__
-```js
-threefive '/DAsAAAAAyiYAP/wCgUAAAABf1+ZmQEBABECD0NVRUkAAAAAf4ABADUAAC2XQZU='
-```
-* __lib__
-```py3
-
-from threefive import Cue
-data = '/DAsAAAAAyiYAP/wCgUAAAABf1+ZmQEBABECD0NVRUkAAAAAf4ABADUAAC2XQZU='
-cue=Cue(data)
-cue.show()
-```
-
-</details>
-
-
-<details><summary>
-
-### Bytes
-
-</summary>
-
-* __cli__
-	* Bytes don't work on the cli
-
-* __lib__
-```py3
-
-from threefive import Cue
-data =  b'\xfc0\x16\x00\x00\x00\x00\x00\x00\x00\xff\xf0\x05\x06\xfe\x00\xc0D\xa0\x00\x00\x00\xb5k\x88'
-cue=Cue(data)
-cue.show()
-```
-
-</details>
-
-
-<details><summary>
-	
-### Hex
-
-</summary>
-
-* Can be a hex literal or hex string or bytes.
-
-* __cli__
-```js
-threefive  0xfc301600000000000000fff00506fed605225b0000b0b65f3b
-```
-* __lib__
-```py3
-
-from threefive import Cue
-data =  0xfc301600000000000000fff00506fed605225b0000b0b65f3b
-cue=Cue(data)
-cue.show()
-```
-
-</details>
-
-
-<details><summary>
-	
-### Int
-
-</summary>
-
-* Can be a literal integer or string or bytes.
-
-* __cli__
-```js
-threefive  1583008701074197245727019716796221243043855984942057168199483
-```
-* __lib__
-```py3
-
-from threefive import Cue
-data =  1583008701074197245727019716796221243043855984942057168199483
-cue=Cue(data)
-cue.show()
-```
-
-
-</details>
-
-
-<details><summary>
-	
-### JSON
-
-</summary>
-
-* __cli__
-	* 	put JSON SCTE-35 in a file and redirect it into threefive 
-```js
-threefive  < json.json
-```
-* __lib__
-
-```py3
-
- from threefive import Cue
- data = '''{
-    "info_section": {
-        "table_id": "0xfc",
-        "section_syntax_indicator": false,
-        "private": false,
-        "sap_type": "0x03",
-        "sap_details": "No Sap Type",
-        "section_length": 22,
-        "protocol_version": 0,
-        "encrypted_packet": false,
-        "encryption_algorithm": 0,
-        "pts_adjustment": 0.0,
-        "cw_index": "0x00",
-        "tier": "0x0fff",
-        "splice_command_length": 5,
-        "splice_command_type": 6,
-        "descriptor_loop_length": 0,
-        "crc": "0xb56b88"
-    },
-    "command": {
-        "command_length": 5,
-        "command_type": 6,
-        "name": "Time Signal",
-        "time_specified_flag": true,
-        "pts_time": 140.005333
-    },
-    "descriptors": []
-}
-'''
-cue=Cue(data)
-cue.show()
-```
-
-</details>
-
-
-<details><summary><u>
-
-### Xml
-
-</u>
-</summary>
-
-* __cli__
-	* put xml SCTE-35 in a [file](xml.xml) and redirect it into threefive 
-	```js
-	threefive < xml.xml
-	```
-* __lib__
-```py3
-from threefive import Cue
-data =  '''
-<scte35:SpliceInfoSection xmlns:scte35="https://scte.org/schemas/35" 
-        ptsAdjustment="0" protocolVersion="0" sapType="3" tier="4095">
-   <scte35:TimeSignal>
-      <scte35:SpliceTime ptsTime="12600480"/>
-   </scte35:TimeSignal>
-</scte35:SpliceInfoSection>
-'''
-cue=Cue(data)
-
-cue.show()
-```
-
-
-</details>
-
-
-
-<details><summary>
-	
-### Xml+binary
-
-</summary>
-
-* __cli__
-	* write xml+binary to a [file](xmlbin.xml) and redirect it to threefive
-```js
-threefive < xmlbin.xml
-```
-* __lib__
-```py3
-
-from threefive import Cue
-data = '''<scte35:Signal xmlns:scte35="https://scte.org/schemas/35">
-    <scte35:Binary>/DAWAAAAAAAAAP/wBQb+AMBEoAAAALVriA==</scte35:Binary>
-</scte35:Signal>
-'''
-cue=Cue(data)
-cue.show()
-```
-
-</details>
-
-</samp>
+| description                              | threefive command                                       |
+|------------------------------------------|---------------------------------------------------------|
+| Parse HLS for __SCTE35__                 |threefive __hls__ https://example.com/master.m3u8        |
+|                                          |                                                         |
+| Inject __SCTE35__ packets                |threefive __inject__ -i in.video -s sidecar.txt -o out.ts|
+|                                          |                                                         |
+| Show raw __SCTE35__ packets              |threefive __packets__ udp://@235.35.3.5:3535             |
+|                                          |                                                         |
+| Create __SCTE35__ sidecar file           |threefive __sidecar__ video.ts                           |
+|                                          |                                                         |
+|Fix __SCTE-35__ data mangled by __ffmpeg__| threefive __sixfix__ video.ts                           |
+|                                          |                                                         |
+| Show streams in mpegts stream            | threefive __show__ https://example.com/video.ts         |
+|                                          |                                                         |
+| Show __iframes__ in mpegts stream        |threefive __iframes__ srt://10.10.1.3:9000               |
+|                                          |                                                         |
+| Show __PTS__ values from mpegts stream   | threefive __pts__ udp://192.168.1.10:9000               |
+|                                          |                                                         |
+|__Proxy__ the __mpegts__ stream to stdout |threefive __proxy__ https://wexample.com/video.ts        |
+|                                          |                                                         |
+| __Multicast__ anything                   |threefive __mcast__ some.file                            |
+|                                          |                                                         |
 
 ___
 
@@ -351,25 +180,6 @@ ___
 
 
 ___
-
-##  [ Install ]
-* python3 via pip
-```rebol
-python3 -mpip install threefive
-```
-* pypy3 
-```rebol
-pypy3 -mpip install threefive
-```
-* from the git repo
-```rebol
-git clone https://github.com/superkabuki/scte35.git
-cd threefive
-make install
-```
-___
-
-##  [ Using the library ]
 
 * Let me show you how easy threefive is to use.
 
@@ -797,4 +607,239 @@ a@fu:~$
 ___
  [__Install__](#install) |[__SCTE-35 Cli__](#the-cli-tool) | [__SCTE-35 HLS__](https://github.com/superkabuki/threefive/blob/main/hls.md) | [__Cue__ Class](https://github.com/superkabuki/threefive/blob/main/cue.md) | [__Stream__ Class](https://github.com/superkabuki/threefive/blob/main/stream.md) | [__Online SCTE-35 Parser__](https://iodisco.com/scte35) | [__Encode SCTE-35__](https://github.com/superkabuki/threefive/blob/main/encode.md) | [__SCTE-35 Examples__](https://github.com/superkabuki/threefive/tree/main/examples)
  | [__SCTE-35 XML__ ](https://github.com/superkabuki/SCTE-35/blob/main/xml.md) and [More __XML__](node.md) | [__threefive runs Four Times Faster on pypy3__](https://pypy.org/) | [__SuperKabuki SCTE-35 MPEGTS Packet Injection__](inject.md)
+
+
+ <details><summary>
+
+### mpegts 
+
+ </summary>
+ 
+* MPEGTS streams can be  Files, Http(s), Multicast, UDP Unicast, or  stdin. 
+
+* __cli__
+```js
+threefive https://example.com/video.ts
+```
+* wildcards work too.
+```js
+threefive /mpegts/*.ts
+```
+
+* __lib__
+```py3
+
+from threefive import Stream
+stream = Stream('https://example.com/video.ts')
+stream.decode()
+
+```
+
+</details>
+
+
+
+<details><summary>
+
+### Base64
+
+</summary>
+
+* __cli__
+```js
+threefive '/DAsAAAAAyiYAP/wCgUAAAABf1+ZmQEBABECD0NVRUkAAAAAf4ABADUAAC2XQZU='
+```
+* __lib__
+```py3
+
+from threefive import Cue
+data = '/DAsAAAAAyiYAP/wCgUAAAABf1+ZmQEBABECD0NVRUkAAAAAf4ABADUAAC2XQZU='
+cue=Cue(data)
+cue.show()
+```
+
+</details>
+
+
+<details><summary>
+
+### Bytes
+
+</summary>
+
+* __cli__
+	* Bytes don't work on the cli
+
+* __lib__
+```py3
+
+from threefive import Cue
+data =  b'\xfc0\x16\x00\x00\x00\x00\x00\x00\x00\xff\xf0\x05\x06\xfe\x00\xc0D\xa0\x00\x00\x00\xb5k\x88'
+cue=Cue(data)
+cue.show()
+```
+
+</details>
+
+
+<details><summary>
+	
+### Hex
+
+</summary>
+
+* Can be a hex literal or hex string or bytes.
+
+* __cli__
+```js
+threefive  0xfc301600000000000000fff00506fed605225b0000b0b65f3b
+```
+* __lib__
+```py3
+
+from threefive import Cue
+data =  0xfc301600000000000000fff00506fed605225b0000b0b65f3b
+cue=Cue(data)
+cue.show()
+```
+
+</details>
+
+
+<details><summary>
+	
+### Int
+
+</summary>
+
+* Can be a literal integer or string or bytes.
+
+* __cli__
+```js
+threefive  1583008701074197245727019716796221243043855984942057168199483
+```
+* __lib__
+```py3
+
+from threefive import Cue
+data =  1583008701074197245727019716796221243043855984942057168199483
+cue=Cue(data)
+cue.show()
+```
+
+
+</details>
+
+
+<details><summary>
+	
+### JSON
+
+</summary>
+
+* __cli__
+	* 	put JSON SCTE-35 in a file and redirect it into threefive 
+```js
+threefive  < json.json
+```
+* __lib__
+
+```py3
+
+ from threefive import Cue
+ data = '''{
+    "info_section": {
+        "table_id": "0xfc",
+        "section_syntax_indicator": false,
+        "private": false,
+        "sap_type": "0x03",
+        "sap_details": "No Sap Type",
+        "section_length": 22,
+        "protocol_version": 0,
+        "encrypted_packet": false,
+        "encryption_algorithm": 0,
+        "pts_adjustment": 0.0,
+        "cw_index": "0x00",
+        "tier": "0x0fff",
+        "splice_command_length": 5,
+        "splice_command_type": 6,
+        "descriptor_loop_length": 0,
+        "crc": "0xb56b88"
+    },
+    "command": {
+        "command_length": 5,
+        "command_type": 6,
+        "name": "Time Signal",
+        "time_specified_flag": true,
+        "pts_time": 140.005333
+    },
+    "descriptors": []
+}
+'''
+cue=Cue(data)
+cue.show()
+```
+
+</details>
+
+
+<details><summary><u>
+
+### Xml
+
+</u>
+</summary>
+
+* __cli__
+	* put xml SCTE-35 in a [file](xml.xml) and redirect it into threefive 
+	```js
+	threefive < xml.xml
+	```
+* __lib__
+```py3
+from threefive import Cue
+data =  '''
+<scte35:SpliceInfoSection xmlns:scte35="https://scte.org/schemas/35" 
+        ptsAdjustment="0" protocolVersion="0" sapType="3" tier="4095">
+   <scte35:TimeSignal>
+      <scte35:SpliceTime ptsTime="12600480"/>
+   </scte35:TimeSignal>
+</scte35:SpliceInfoSection>
+'''
+cue=Cue(data)
+
+cue.show()
+```
+
+
+</details>
+
+
+
+<details><summary>
+	
+### Xml+binary
+
+</summary>
+
+* __cli__
+	* write xml+binary to a [file](xmlbin.xml) and redirect it to threefive
+```js
+threefive < xmlbin.xml
+```
+* __lib__
+```py3
+
+from threefive import Cue
+data = '''<scte35:Signal xmlns:scte35="https://scte.org/schemas/35">
+    <scte35:Binary>/DAWAAAAAAAAAP/wBQb+AMBEoAAAALVriA==</scte35:Binary>
+</scte35:Signal>
+'''
+cue=Cue(data)
+cue.show()
+```
+
+</details>
+
+</samp>
 
