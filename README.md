@@ -82,7 +82,7 @@ ___
 ## [ Quick Start ] 
 
 
-* Most of the stuff in threefive all woerks the sme way.
+* Most of the stuff in threefive all works the same way.
 
 ### [cli tool]
 
@@ -108,6 +108,8 @@ ___
 |          |   |   |                                                     |
 |__json__  |__xml__    | threefive  < json.json  __xml__                         |
 |          |           |                                                         |
+
+* __Additional functionality__ in the threefive cli tool.
 
 | description                              | threefive command                                       |
 |------------------------------------------|---------------------------------------------------------|
