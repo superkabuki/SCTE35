@@ -5,7 +5,7 @@
 ___
 
 ### [ threefive now supports SRT](srt.md)
-[<img width="825" height="250" alt="threefive now has SRT support" src="https://github.com/user-attachments/assets/514cafa2-6c09-40e3-a738-f4f6d30edd9c" />](srt.md)
+[<img width="825" height="400" alt="threefive now has SRT support" src="https://github.com/user-attachments/assets/514cafa2-6c09-40e3-a738-f4f6d30edd9c" />](srt.md)
 
 
 <BR> _checkout [SRTfu](https://github.com/superkabuki/srtfu)_
@@ -37,7 +37,6 @@ set __segmentation_upid_length__= __0__ <BR>
 set __segmentation_upid_type__= __0__
 ___
 
-<img width="825" height="75" alt="image" src="https://github.com/user-attachments/assets/864ce688-b087-4d1e-9062-2d4f2b4f7dcf" />
 
 
 # [ Documentation ]
@@ -89,11 +88,11 @@ ___
 
 * The default action is to read a input and write a SCTE-35 output.
 
-  *  Inputs  mpegts, base64, hex, json,and xml, and xmlbin.
+  *  __Inputs:__  mpegts, base64, hex, json,and xml, and xmlbin.
 
-  *  Outputs base64, bytes, hex, int, json, xml, and xmlbin.
+  *  __Outputs:__ base64, bytes, hex, int, json, xml, and xmlbin.
 
-  *  SCTE35 can read from  strings, files, stdin, http(s), multicast,srt and udp.
+  *  __Sources:__ SCTE35 can read from  strings, files, stdin, http(s), multicast,srt and udp.
 
 |Input     |Output     |Example                                                  |
 |----------|-----------|---------------------------------------------------------|
