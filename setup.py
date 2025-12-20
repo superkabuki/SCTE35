@@ -27,7 +27,7 @@ setuptools.setup(
     url="https://github.com/superkabuki/threefive",
     install_requires=[
         "pyaes",
-        "srtfu >= 0.0.7",
+        "srtfu >= 0.0.9",
     ],
     scripts=[
         "bin/threefive",
