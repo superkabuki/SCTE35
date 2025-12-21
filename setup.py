@@ -9,13 +9,6 @@ import time
 from threefive.version import version
 from threefive.stuff import blue
 
-blue("SRT support Requires installing libsrt")
-blue("Use the package manager from your operating system")
-blue(
-    "or try https://raw.githubusercontent.com/superkabuki/SRTfu/refs/heads/main/install-libsrt.sh"
-)
-time.sleep(10)
-
 setuptools.setup(
     name="threefive",
     version=version,
@@ -27,7 +20,7 @@ setuptools.setup(
     url="https://github.com/superkabuki/threefive",
     install_requires=[
         "pyaes",
-        "srtfu >= 0.0.9",
+        "srtfu >= 0.0.11",
     ],
     scripts=[
         "bin/threefive",
