@@ -1,19 +1,19 @@
 # [ threefive is the #1 SCTE35 Parser on the Planet ]  
 
-* __threefive__ has been __profiled and benchmarked__ every way possible. __this is some of the fastest python code available.__
-* If you do __SCTE35__, you want to __use threefive__. 
+### If you do __SCTE35__, you want to __use threefive__. 
 ___
 
 ### [ threefive now supports SRT](srt.md)
-[<img width="825" height="400" alt="threefive now has SRT support" src="https://github.com/user-attachments/assets/514cafa2-6c09-40e3-a738-f4f6d30edd9c" />](srt.md)
-
+[<img width="1033" height="441" alt="image" src="https://github.com/user-attachments/assets/693d1d62-9304-4e32-a85e-fbafc5c2e16a" />](srt.md)
 
 <BR> _checkout [SRTfu](https://github.com/superkabuki/srtfu)_
 
 ___
-# [ Latest threefive version is v3.0.67 ]
-* live SRT streaming support has been fully integrated in threefive v3.0.67, no special handling required.
-* SRT support requires installing libsrt. Yeah, I got a [script](https://raw.githubusercontent.com/superkabuki/SRTfu/refs/heads/main/install-libsrt.sh) that will do that for you.
+# [ Latest threefive version is v3.0.69 ]
+* __live SRT support is now stable for decoding__.
+* live SRT streaming support has been  integrated, no special handling required.
+* srtfu now build libsrt automatically the first time you use it.
+* __threefive functions with or without SRT support.__ 
 
 # [ Features ]
 <samp>
