@@ -6,7 +6,7 @@ ___
 ### [ threefive now supports SRT](srt.md)
 [<img width="1033" height="441" alt="image" src="https://github.com/user-attachments/assets/693d1d62-9304-4e32-a85e-fbafc5c2e16a" />](srt.md)
 <BR>
-<details><summary>Output of threefive parsing a live SRT stream today </summary>
+<details><summary>Output of over four hours of threefive parsing a live SRT stream today</summary>
 <pre>
 a@fu:~$ threefive srt://192.168.12.247:4201
 startup: ✓
@@ -3691,7 +3691,1159 @@ connect: ✓
         "pts": 14858.404
     }
 }
-	</pre>
+^[[B{
+    "info_section": {
+        "table_id": "0xfc",
+        "section_syntax_indicator": false,
+        "private": false,
+        "sap_type": "0x03",
+        "sap_details": "No Sap Type",
+        "section_length": 64,
+        "protocol_version": 0,
+        "encrypted_packet": false,
+        "encryption_algorithm": 0,
+        "pts_adjustment": 74825.294489,
+        "cw_index": "0x00",
+        "tier": "0x00",
+        "splice_command_length": 5,
+        "splice_command_type": 6,
+        "descriptor_loop_length": 42,
+        "crc": "0xb8024fd8"
+    },
+    "command": {
+        "command_length": 5,
+        "command_type": 6,
+        "name": "Time Signal",
+        "time_specified_flag": true,
+        "pts_time": 37399.565956
+    },
+    "descriptors": [
+        {
+            "tag": 2,
+            "identifier": "CUEI",
+            "name": "Segmentation Descriptor",
+            "descriptor_length": 40,
+            "segmentation_event_cancel_indicator": false,
+            "segmentation_event_id": "0xffffffff",
+            "segmentation_event_id_compliance_indicator": true,
+            "program_segmentation_flag": true,
+            "segmentation_duration_flag": true,
+            "delivery_not_restricted_flag": true,
+            "segmentation_duration": 209.966667,
+            "segmentation_message": "Break Start",
+            "segmentation_type_id": 34,
+            "segmentation_upid_length": 20,
+            "segmentation_upid_type": 1,
+            "segmentation_upid_type_name": "Type 0x01 is deprecated, use MPU type 0x0C",
+            "segmentation_upid": "msnbc_EP026894041709",
+            "segment_num": 7,
+            "segments_expected": 4
+        }
+    ],
+    "packet_data": {
+        "pid": 258,
+        "program": 1,
+        "pcr": 16777.509422,
+        "pts": 16778.244944
+    }
+}
+{
+    "info_section": {
+        "table_id": "0xfc",
+        "section_syntax_indicator": false,
+        "private": false,
+        "sap_type": "0x03",
+        "sap_details": "No Sap Type",
+        "section_length": 49,
+        "protocol_version": 0,
+        "encrypted_packet": false,
+        "encryption_algorithm": 0,
+        "pts_adjustment": 74825.294489,
+        "cw_index": "0x00",
+        "tier": "0x0fff",
+        "splice_command_length": 20,
+        "splice_command_type": 5,
+        "descriptor_loop_length": 12,
+        "crc": "0x258338a1"
+    },
+    "command": {
+        "command_length": 20,
+        "command_type": 5,
+        "name": "Splice Insert",
+        "time_specified_flag": true,
+        "pts_time": 37549.532622,
+        "break_auto_return": true,
+        "break_duration": 60.0,
+        "splice_event_id": 38,
+        "splice_event_cancel_indicator": false,
+        "out_of_network_indicator": true,
+        "program_splice_flag": true,
+        "duration_flag": true,
+        "splice_immediate_flag": false,
+        "event_id_compliance_flag": true,
+        "unique_program_id": 0,
+        "avail_num": 0,
+        "avails_expected": 0
+    },
+    "descriptors": [
+        {
+            "tag": 1,
+            "identifier": "CUEI",
+            "name": "DTMF Descriptor",
+            "descriptor_length": 10,
+            "preroll": 80,
+            "dtmf_count": 4,
+            "dtmf_chars": [
+                "1",
+                "2",
+                "1",
+                "*"
+            ]
+        }
+    ],
+    "packet_data": {
+        "pid": 258,
+        "program": 1,
+        "pcr": 16920.909422,
+        "pts": 16921.7026
+    }
+}
+{
+    "info_section": {
+        "table_id": "0xfc",
+        "section_syntax_indicator": false,
+        "private": false,
+        "sap_type": "0x03",
+        "sap_details": "No Sap Type",
+        "section_length": 66,
+        "protocol_version": 0,
+        "encrypted_packet": false,
+        "encryption_algorithm": 0,
+        "pts_adjustment": 74825.294489,
+        "cw_index": "0x00",
+        "tier": "0x0fff",
+        "splice_command_length": 5,
+        "splice_command_type": 6,
+        "descriptor_loop_length": 44,
+        "crc": "0x2b39f24"
+    },
+    "command": {
+        "command_length": 5,
+        "command_type": 6,
+        "name": "Time Signal",
+        "time_specified_flag": true,
+        "pts_time": 37549.532622
+    },
+    "descriptors": [
+        {
+            "tag": 2,
+            "identifier": "CUEI",
+            "name": "Segmentation Descriptor",
+            "descriptor_length": 42,
+            "segmentation_event_cancel_indicator": false,
+            "segmentation_event_id": "0x01",
+            "segmentation_event_id_compliance_indicator": true,
+            "program_segmentation_flag": true,
+            "segmentation_duration_flag": true,
+            "delivery_not_restricted_flag": true,
+            "segmentation_duration": 60.066667,
+            "segmentation_message": "Distributor Placement Opportunity Start",
+            "segmentation_type_id": 54,
+            "segmentation_upid_length": 20,
+            "segmentation_upid_type": 1,
+            "segmentation_upid_type_name": "Type 0x01 is deprecated, use MPU type 0x0C",
+            "segmentation_upid": "msnbc_EP026894041709",
+            "segment_num": 1,
+            "segments_expected": 1,
+            "sub_segment_num": 0,
+            "sub_segments_expected": 0
+        }
+    ],
+    "packet_data": {
+        "pid": 258,
+        "program": 1,
+        "pcr": 16921.509422,
+        "pts": 16922.270467
+    }
+}
+{
+    "info_section": {
+        "table_id": "0xfc",
+        "section_syntax_indicator": false,
+        "private": false,
+        "sap_type": "0x03",
+        "sap_details": "No Sap Type",
+        "section_length": 64,
+        "protocol_version": 0,
+        "encrypted_packet": false,
+        "encryption_algorithm": 0,
+        "pts_adjustment": 74825.294489,
+        "cw_index": "0x00",
+        "tier": "0x00",
+        "splice_command_length": 5,
+        "splice_command_type": 6,
+        "descriptor_loop_length": 42,
+        "crc": "0xc861dfb5"
+    },
+    "command": {
+        "command_length": 5,
+        "command_type": 6,
+        "name": "Time Signal",
+        "time_specified_flag": true,
+        "pts_time": 38261.932622
+    },
+    "descriptors": [
+        {
+            "tag": 2,
+            "identifier": "CUEI",
+            "name": "Segmentation Descriptor",
+            "descriptor_length": 40,
+            "segmentation_event_cancel_indicator": false,
+            "segmentation_event_id": "0xffffffff",
+            "segmentation_event_id_compliance_indicator": true,
+            "program_segmentation_flag": true,
+            "segmentation_duration_flag": true,
+            "delivery_not_restricted_flag": true,
+            "segmentation_duration": 210.0,
+            "segmentation_message": "Break Start",
+            "segmentation_type_id": 34,
+            "segmentation_upid_length": 20,
+            "segmentation_upid_type": 1,
+            "segmentation_upid_type_name": "Type 0x01 is deprecated, use MPU type 0x0C",
+            "segmentation_upid": "msnbc_EP026894041709",
+            "segment_num": 8,
+            "segments_expected": 3
+        }
+    ],
+    "packet_data": {
+        "pid": 258,
+        "program": 1,
+        "pcr": 17640.909422,
+        "pts": 17641.7071
+    }
+}
+{
+    "info_section": {
+        "table_id": "0xfc",
+        "section_syntax_indicator": false,
+        "private": false,
+        "sap_type": "0x03",
+        "sap_details": "No Sap Type",
+        "section_length": 64,
+        "protocol_version": 0,
+        "encrypted_packet": false,
+        "encryption_algorithm": 0,
+        "pts_adjustment": 74825.294489,
+        "cw_index": "0x00",
+        "tier": "0x00",
+        "splice_command_length": 5,
+        "splice_command_type": 6,
+        "descriptor_loop_length": 42,
+        "crc": "0x3b4ed318"
+    },
+    "command": {
+        "command_length": 5,
+        "command_type": 6,
+        "name": "Time Signal",
+        "time_specified_flag": true,
+        "pts_time": 38471.932622
+    },
+    "descriptors": [
+        {
+            "tag": 2,
+            "identifier": "CUEI",
+            "name": "Segmentation Descriptor",
+            "descriptor_length": 40,
+            "segmentation_event_cancel_indicator": false,
+            "segmentation_event_id": "0xffffffff",
+            "segmentation_event_id_compliance_indicator": true,
+            "program_segmentation_flag": true,
+            "segmentation_duration_flag": true,
+            "delivery_not_restricted_flag": true,
+            "segmentation_duration": 209.966667,
+            "segmentation_message": "Break End",
+            "segmentation_type_id": 35,
+            "segmentation_upid_length": 20,
+            "segmentation_upid_type": 1,
+            "segmentation_upid_type_name": "Type 0x01 is deprecated, use MPU type 0x0C",
+            "segmentation_upid": "msnbc_EP026894041709",
+            "segment_num": 8,
+            "segments_expected": 3
+        }
+    ],
+    "packet_data": {
+        "pid": 258,
+        "program": 1,
+        "pcr": 17849.609422,
+        "pts": 17850.400156
+    }
+}
+{
+    "info_section": {
+        "table_id": "0xfc",
+        "section_syntax_indicator": false,
+        "private": false,
+        "sap_type": "0x03",
+        "sap_details": "No Sap Type",
+        "section_length": 64,
+        "protocol_version": 0,
+        "encrypted_packet": false,
+        "encryption_algorithm": 0,
+        "pts_adjustment": 74825.294489,
+        "cw_index": "0x00",
+        "tier": "0x00",
+        "splice_command_length": 5,
+        "splice_command_type": 6,
+        "descriptor_loop_length": 42,
+        "crc": "0x33dfdf69"
+    },
+    "command": {
+        "command_length": 5,
+        "command_type": 6,
+        "name": "Time Signal",
+        "time_specified_flag": true,
+        "pts_time": 38817.465956
+    },
+    "descriptors": [
+        {
+            "tag": 2,
+            "identifier": "CUEI",
+            "name": "Segmentation Descriptor",
+            "descriptor_length": 40,
+            "segmentation_event_cancel_indicator": false,
+            "segmentation_event_id": "0xffffffff",
+            "segmentation_event_id_compliance_indicator": true,
+            "program_segmentation_flag": true,
+            "segmentation_duration_flag": true,
+            "delivery_not_restricted_flag": true,
+            "segmentation_duration": 200.0,
+            "segmentation_message": "Break Start",
+            "segmentation_type_id": 34,
+            "segmentation_upid_length": 20,
+            "segmentation_upid_type": 1,
+            "segmentation_upid_type_name": "Type 0x01 is deprecated, use MPU type 0x0C",
+            "segmentation_upid": "msnbc_EP026894041709",
+            "segment_num": 10,
+            "segments_expected": 1
+        }
+    ],
+    "packet_data": {
+        "pid": 258,
+        "program": 1,
+        "pcr": 18195.409422,
+        "pts": 18196.137244
+    }
+}
+{
+    "info_section": {
+        "table_id": "0xfc",
+        "section_syntax_indicator": false,
+        "private": false,
+        "sap_type": "0x03",
+        "sap_details": "No Sap Type",
+        "section_length": 49,
+        "protocol_version": 0,
+        "encrypted_packet": false,
+        "encryption_algorithm": 0,
+        "pts_adjustment": 74825.294489,
+        "cw_index": "0x00",
+        "tier": "0x0fff",
+        "splice_command_length": 20,
+        "splice_command_type": 5,
+        "descriptor_loop_length": 12,
+        "crc": "0x77938702"
+    },
+    "command": {
+        "command_length": 20,
+        "command_type": 5,
+        "name": "Splice Insert",
+        "time_specified_flag": true,
+        "pts_time": 38937.465956,
+        "break_auto_return": true,
+        "break_duration": 59.966667,
+        "splice_event_id": 46,
+        "splice_event_cancel_indicator": false,
+        "out_of_network_indicator": true,
+        "program_splice_flag": true,
+        "duration_flag": true,
+        "splice_immediate_flag": false,
+        "event_id_compliance_flag": true,
+        "unique_program_id": 0,
+        "avail_num": 0,
+        "avails_expected": 0
+    },
+    "descriptors": [
+        {
+            "tag": 1,
+            "identifier": "CUEI",
+            "name": "DTMF Descriptor",
+            "descriptor_length": 10,
+            "preroll": 80,
+            "dtmf_count": 4,
+            "dtmf_chars": [
+                "1",
+                "2",
+                "1",
+                "*"
+            ]
+        }
+    ],
+    "packet_data": {
+        "pid": 258,
+        "program": 1,
+        "pcr": 18308.909422,
+        "pts": 18309.688244
+    }
+}
+{
+    "info_section": {
+        "table_id": "0xfc",
+        "section_syntax_indicator": false,
+        "private": false,
+        "sap_type": "0x03",
+        "sap_details": "No Sap Type",
+        "section_length": 66,
+        "protocol_version": 0,
+        "encrypted_packet": false,
+        "encryption_algorithm": 0,
+        "pts_adjustment": 74825.294489,
+        "cw_index": "0x00",
+        "tier": "0x0fff",
+        "splice_command_length": 5,
+        "splice_command_type": 6,
+        "descriptor_loop_length": 44,
+        "crc": "0xed0c5c97"
+    },
+    "command": {
+        "command_length": 5,
+        "command_type": 6,
+        "name": "Time Signal",
+        "time_specified_flag": true,
+        "pts_time": 38937.465956
+    },
+    "descriptors": [
+        {
+            "tag": 2,
+            "identifier": "CUEI",
+            "name": "Segmentation Descriptor",
+            "descriptor_length": 42,
+            "segmentation_event_cancel_indicator": false,
+            "segmentation_event_id": "0x01",
+            "segmentation_event_id_compliance_indicator": true,
+            "program_segmentation_flag": true,
+            "segmentation_duration_flag": true,
+            "delivery_not_restricted_flag": true,
+            "segmentation_duration": 60.033333,
+            "segmentation_message": "Distributor Placement Opportunity Start",
+            "segmentation_type_id": 54,
+            "segmentation_upid_length": 20,
+            "segmentation_upid_type": 1,
+            "segmentation_upid_type_name": "Type 0x01 is deprecated, use MPU type 0x0C",
+            "segmentation_upid": "msnbc_EP026894041709",
+            "segment_num": 1,
+            "segments_expected": 1,
+            "sub_segment_num": 0,
+            "sub_segments_expected": 0
+        }
+    ],
+    "packet_data": {
+        "pid": 258,
+        "program": 1,
+        "pcr": 18309.409422,
+        "pts": 18310.110089
+    }
+}
+{
+    "info_section": {
+        "table_id": "0xfc",
+        "section_syntax_indicator": false,
+        "private": false,
+        "sap_type": "0x03",
+        "sap_details": "No Sap Type",
+        "section_length": 49,
+        "protocol_version": 0,
+        "encrypted_packet": false,
+        "encryption_algorithm": 0,
+        "pts_adjustment": 74825.294489,
+        "cw_index": "0x00",
+        "tier": "0x0fff",
+        "splice_command_length": 20,
+        "splice_command_type": 5,
+        "descriptor_loop_length": 12,
+        "crc": "0x901adcc6"
+    },
+    "command": {
+        "command_length": 20,
+        "command_type": 5,
+        "name": "Splice Insert",
+        "time_specified_flag": true,
+        "pts_time": 38997.432622,
+        "break_auto_return": false,
+        "break_duration": 60.0,
+        "splice_event_id": 48,
+        "splice_event_cancel_indicator": false,
+        "out_of_network_indicator": false,
+        "program_splice_flag": true,
+        "duration_flag": true,
+        "splice_immediate_flag": false,
+        "event_id_compliance_flag": true,
+        "unique_program_id": 0,
+        "avail_num": 0,
+        "avails_expected": 0
+    },
+    "descriptors": [
+        {
+            "tag": 1,
+            "identifier": "CUEI",
+            "name": "DTMF Descriptor",
+            "descriptor_length": 10,
+            "preroll": 18,
+            "dtmf_count": 4,
+            "dtmf_chars": [
+                "1",
+                "2",
+                "1",
+                "#"
+            ]
+        }
+    ],
+    "packet_data": {
+        "pid": 258,
+        "program": 1,
+        "pcr": 18350.909422,
+        "pts": 18375.706222
+    }
+}
+{
+    "info_section": {
+        "table_id": "0xfc",
+        "section_syntax_indicator": false,
+        "private": false,
+        "sap_type": "0x03",
+        "sap_details": "No Sap Type",
+        "section_length": 59,
+        "protocol_version": 0,
+        "encrypted_packet": false,
+        "encryption_algorithm": 0,
+        "pts_adjustment": 74825.294489,
+        "cw_index": "0x00",
+        "tier": "0x0fff",
+        "splice_command_length": 5,
+        "splice_command_type": 6,
+        "descriptor_loop_length": 37,
+        "crc": "0xbc2597b6"
+    },
+    "command": {
+        "command_length": 5,
+        "command_type": 6,
+        "name": "Time Signal",
+        "time_specified_flag": true,
+        "pts_time": 38997.465956
+    },
+    "descriptors": [
+        {
+            "tag": 2,
+            "identifier": "CUEI",
+            "name": "Segmentation Descriptor",
+            "descriptor_length": 35,
+            "segmentation_event_cancel_indicator": false,
+            "segmentation_event_id": "0x01",
+            "segmentation_event_id_compliance_indicator": true,
+            "program_segmentation_flag": true,
+            "segmentation_duration_flag": false,
+            "delivery_not_restricted_flag": true,
+            "segmentation_message": "Distributor Placement Opportunity End",
+            "segmentation_type_id": 55,
+            "segmentation_upid_length": 20,
+            "segmentation_upid_type": 1,
+            "segmentation_upid_type_name": "Type 0x01 is deprecated, use MPU type 0x0C",
+            "segmentation_upid": "msnbc_EP026894041709",
+            "segment_num": 1,
+            "segments_expected": 1
+        }
+    ],
+    "packet_data": {
+        "pid": 258,
+        "program": 1,
+        "pcr": 18375.009422,
+        "pts": 18375.721356
+    }
+}
+{
+    "info_section": {
+        "table_id": "0xfc",
+        "section_syntax_indicator": false,
+        "private": false,
+        "sap_type": "0x03",
+        "sap_details": "No Sap Type",
+        "section_length": 64,
+        "protocol_version": 0,
+        "encrypted_packet": false,
+        "encryption_algorithm": 0,
+        "pts_adjustment": 74825.294489,
+        "cw_index": "0x00",
+        "tier": "0x00",
+        "splice_command_length": 5,
+        "splice_command_type": 6,
+        "descriptor_loop_length": 42,
+        "crc": "0x4e301f8d"
+    },
+    "command": {
+        "command_length": 5,
+        "command_type": 6,
+        "name": "Time Signal",
+        "time_specified_flag": true,
+        "pts_time": 39017.465956
+    },
+    "descriptors": [
+        {
+            "tag": 2,
+            "identifier": "CUEI",
+            "name": "Segmentation Descriptor",
+            "descriptor_length": 40,
+            "segmentation_event_cancel_indicator": false,
+            "segmentation_event_id": "0xffffffff",
+            "segmentation_event_id_compliance_indicator": true,
+            "program_segmentation_flag": true,
+            "segmentation_duration_flag": true,
+            "delivery_not_restricted_flag": true,
+            "segmentation_duration": 200.0,
+            "segmentation_message": "Break End",
+            "segmentation_type_id": 35,
+            "segmentation_upid_length": 20,
+            "segmentation_upid_type": 1,
+            "segmentation_upid_type_name": "Type 0x01 is deprecated, use MPU type 0x0C",
+            "segmentation_upid": "msnbc_EP026894041709",
+            "segment_num": 10,
+            "segments_expected": 1
+        }
+    ],
+    "packet_data": {
+        "pid": 258,
+        "program": 1,
+        "pcr": 18395.409422,
+        "pts": 18396.114667
+    }
+}
+{
+    "info_section": {
+        "table_id": "0xfc",
+        "section_syntax_indicator": false,
+        "private": false,
+        "sap_type": "0x03",
+        "sap_details": "No Sap Type",
+        "section_length": 64,
+        "protocol_version": 0,
+        "encrypted_packet": false,
+        "encryption_algorithm": 0,
+        "pts_adjustment": 74825.294489,
+        "cw_index": "0x00",
+        "tier": "0x00",
+        "splice_command_length": 5,
+        "splice_command_type": 6,
+        "descriptor_loop_length": 42,
+        "crc": "0x5be87abe"
+    },
+    "command": {
+        "command_length": 5,
+        "command_type": 6,
+        "name": "Time Signal",
+        "time_specified_flag": true,
+        "pts_time": 39073.365956
+    },
+    "descriptors": [
+        {
+            "tag": 2,
+            "identifier": "CUEI",
+            "name": "Segmentation Descriptor",
+            "descriptor_length": 40,
+            "segmentation_event_cancel_indicator": false,
+            "segmentation_event_id": "0xffffffff",
+            "segmentation_event_id_compliance_indicator": true,
+            "program_segmentation_flag": true,
+            "segmentation_duration_flag": true,
+            "delivery_not_restricted_flag": true,
+            "segmentation_duration": 55.8,
+            "segmentation_message": "Program End",
+            "segmentation_type_id": 17,
+            "segmentation_upid_length": 20,
+            "segmentation_upid_type": 1,
+            "segmentation_upid_type_name": "Type 0x01 is deprecated, use MPU type 0x0C",
+            "segmentation_upid": "msnbc_EP026894041709",
+            "segment_num": 1,
+            "segments_expected": 0
+        }
+    ],
+    "packet_data": {
+        "pid": 258,
+        "program": 1,
+        "pcr": 18451.209422,
+        "pts": 18451.985522
+    }
+}
+{
+    "info_section": {
+        "table_id": "0xfc",
+        "section_syntax_indicator": false,
+        "private": false,
+        "sap_type": "0x03",
+        "sap_details": "No Sap Type",
+        "section_length": 64,
+        "protocol_version": 0,
+        "encrypted_packet": false,
+        "encryption_algorithm": 0,
+        "pts_adjustment": 74825.294489,
+        "cw_index": "0x00",
+        "tier": "0x00",
+        "splice_command_length": 5,
+        "splice_command_type": 6,
+        "descriptor_loop_length": 42,
+        "crc": "0x9d8f7713"
+    },
+    "command": {
+        "command_length": 5,
+        "command_type": 6,
+        "name": "Time Signal",
+        "time_specified_flag": true,
+        "pts_time": 39073.365956
+    },
+    "descriptors": [
+        {
+            "tag": 2,
+            "identifier": "CUEI",
+            "name": "Segmentation Descriptor",
+            "descriptor_length": 40,
+            "segmentation_event_cancel_indicator": false,
+            "segmentation_event_id": "0xffffffff",
+            "segmentation_event_id_compliance_indicator": true,
+            "program_segmentation_flag": true,
+            "segmentation_duration_flag": true,
+            "delivery_not_restricted_flag": true,
+            "segmentation_duration": 1200.0,
+            "segmentation_message": "Program Start",
+            "segmentation_type_id": 16,
+            "segmentation_upid_length": 20,
+            "segmentation_upid_type": 1,
+            "segmentation_upid_type_name": "Type 0x01 is deprecated, use MPU type 0x0C",
+            "segmentation_upid": "msnbc_EP027437401652",
+            "segment_num": 1,
+            "segments_expected": 0
+        }
+    ],
+    "packet_data": {
+        "pid": 258,
+        "program": 1,
+        "pcr": 18451.409422,
+        "pts": 18452.114378
+    }
+}
+{
+    "info_section": {
+        "table_id": "0xfc",
+        "section_syntax_indicator": false,
+        "private": false,
+        "sap_type": "0x03",
+        "sap_details": "No Sap Type",
+        "section_length": 64,
+        "protocol_version": 0,
+        "encrypted_packet": false,
+        "encryption_algorithm": 0,
+        "pts_adjustment": 74825.294489,
+        "cw_index": "0x00",
+        "tier": "0x00",
+        "splice_command_length": 5,
+        "splice_command_type": 6,
+        "descriptor_loop_length": 42,
+        "crc": "0x527f8038"
+    },
+    "command": {
+        "command_length": 5,
+        "command_type": 6,
+        "name": "Time Signal",
+        "time_specified_flag": true,
+        "pts_time": 39934.299289
+    },
+    "descriptors": [
+        {
+            "tag": 2,
+            "identifier": "CUEI",
+            "name": "Segmentation Descriptor",
+            "descriptor_length": 40,
+            "segmentation_event_cancel_indicator": false,
+            "segmentation_event_id": "0xffffffff",
+            "segmentation_event_id_compliance_indicator": true,
+            "program_segmentation_flag": true,
+            "segmentation_duration_flag": true,
+            "delivery_not_restricted_flag": true,
+            "segmentation_duration": 59.9,
+            "segmentation_message": "Break End",
+            "segmentation_type_id": 35,
+            "segmentation_upid_length": 20,
+            "segmentation_upid_type": 1,
+            "segmentation_upid_type_name": "Type 0x01 is deprecated, use MPU type 0x0C",
+            "segmentation_upid": "msnbc_EP027437401652",
+            "segment_num": 1,
+            "segments_expected": 5
+        }
+    ],
+    "packet_data": {
+        "pid": 258,
+        "program": 1,
+        "pcr": 19311.809422,
+        "pts": 19312.607733
+    }
+}
+{
+    "info_section": {
+        "table_id": "0xfc",
+        "section_syntax_indicator": false,
+        "private": false,
+        "sap_type": "0x03",
+        "sap_details": "No Sap Type",
+        "section_length": 64,
+        "protocol_version": 0,
+        "encrypted_packet": false,
+        "encryption_algorithm": 0,
+        "pts_adjustment": 74825.294489,
+        "cw_index": "0x00",
+        "tier": "0x00",
+        "splice_command_length": 5,
+        "splice_command_type": 6,
+        "descriptor_loop_length": 42,
+        "crc": "0x41517610"
+    },
+    "command": {
+        "command_length": 5,
+        "command_type": 6,
+        "name": "Time Signal",
+        "time_specified_flag": true,
+        "pts_time": 40399.699289
+    },
+    "descriptors": [
+        {
+            "tag": 2,
+            "identifier": "CUEI",
+            "name": "Segmentation Descriptor",
+            "descriptor_length": 40,
+            "segmentation_event_cancel_indicator": false,
+            "segmentation_event_id": "0xffffffff",
+            "segmentation_event_id_compliance_indicator": true,
+            "program_segmentation_flag": true,
+            "segmentation_duration_flag": true,
+            "delivery_not_restricted_flag": true,
+            "segmentation_duration": 270.033333,
+            "segmentation_message": "Break Start",
+            "segmentation_type_id": 34,
+            "segmentation_upid_length": 20,
+            "segmentation_upid_type": 1,
+            "segmentation_upid_type_name": "Type 0x01 is deprecated, use MPU type 0x0C",
+            "segmentation_upid": "msnbc_EP027437401652",
+            "segment_num": 2,
+            "segments_expected": 4
+        }
+    ],
+    "packet_data": {
+        "pid": 258,
+        "program": 1,
+        "pcr": 19777.509422,
+        "pts": 19778.271044
+    }
+}
+{
+    "info_section": {
+        "table_id": "0xfc",
+        "section_syntax_indicator": false,
+        "private": false,
+        "sap_type": "0x03",
+        "sap_details": "No Sap Type",
+        "section_length": 49,
+        "protocol_version": 0,
+        "encrypted_packet": false,
+        "encryption_algorithm": 0,
+        "pts_adjustment": 74825.294489,
+        "cw_index": "0x00",
+        "tier": "0x0fff",
+        "splice_command_length": 20,
+        "splice_command_type": 5,
+        "descriptor_loop_length": 12,
+        "crc": "0xdbbccff8"
+    },
+    "command": {
+        "command_length": 20,
+        "command_type": 5,
+        "name": "Splice Insert",
+        "time_specified_flag": true,
+        "pts_time": 40579.732622,
+        "break_auto_return": true,
+        "break_duration": 90.0,
+        "splice_event_id": 56,
+        "splice_event_cancel_indicator": false,
+        "out_of_network_indicator": true,
+        "program_splice_flag": true,
+        "duration_flag": true,
+        "splice_immediate_flag": false,
+        "event_id_compliance_flag": true,
+        "unique_program_id": 0,
+        "avail_num": 0,
+        "avails_expected": 0
+    },
+    "descriptors": [
+        {
+            "tag": 1,
+            "identifier": "CUEI",
+            "name": "DTMF Descriptor",
+            "descriptor_length": 10,
+            "preroll": 80,
+            "dtmf_count": 4,
+            "dtmf_chars": [
+                "1",
+                "2",
+                "1",
+                "*"
+            ]
+        }
+    ],
+    "packet_data": {
+        "pid": 258,
+        "program": 1,
+        "pcr": 19950.909422,
+        "pts": 19951.690967
+    }
+}
+{
+    "info_section": {
+        "table_id": "0xfc",
+        "section_syntax_indicator": false,
+        "private": false,
+        "sap_type": "0x03",
+        "sap_details": "No Sap Type",
+        "section_length": 66,
+        "protocol_version": 0,
+        "encrypted_packet": false,
+        "encryption_algorithm": 0,
+        "pts_adjustment": 74825.294489,
+        "cw_index": "0x00",
+        "tier": "0x0fff",
+        "splice_command_length": 5,
+        "splice_command_type": 6,
+        "descriptor_loop_length": 44,
+        "crc": "0xb21d3df6"
+    },
+    "command": {
+        "command_length": 5,
+        "command_type": 6,
+        "name": "Time Signal",
+        "time_specified_flag": true,
+        "pts_time": 40579.732622
+    },
+    "descriptors": [
+        {
+            "tag": 2,
+            "identifier": "CUEI",
+            "name": "Segmentation Descriptor",
+            "descriptor_length": 42,
+            "segmentation_event_cancel_indicator": false,
+            "segmentation_event_id": "0x01",
+            "segmentation_event_id_compliance_indicator": true,
+            "program_segmentation_flag": true,
+            "segmentation_duration_flag": true,
+            "delivery_not_restricted_flag": true,
+            "segmentation_duration": 90.0,
+            "segmentation_message": "Distributor Placement Opportunity Start",
+            "segmentation_type_id": 54,
+            "segmentation_upid_length": 20,
+            "segmentation_upid_type": 1,
+            "segmentation_upid_type_name": "Type 0x01 is deprecated, use MPU type 0x0C",
+            "segmentation_upid": "msnbc_EP027437401652",
+            "segment_num": 1,
+            "segments_expected": 1,
+            "sub_segment_num": 0,
+            "sub_segments_expected": 0
+        }
+    ],
+    "packet_data": {
+        "pid": 258,
+        "program": 1,
+        "pcr": 19951.809422,
+        "pts": 19952.529867
+    }
+}
+{
+    "info_section": {
+        "table_id": "0xfc",
+        "section_syntax_indicator": false,
+        "private": false,
+        "sap_type": "0x03",
+        "sap_details": "No Sap Type",
+        "section_length": 49,
+        "protocol_version": 0,
+        "encrypted_packet": false,
+        "encryption_algorithm": 0,
+        "pts_adjustment": 74825.294489,
+        "cw_index": "0x00",
+        "tier": "0x0fff",
+        "splice_command_length": 20,
+        "splice_command_type": 5,
+        "descriptor_loop_length": 12,
+        "crc": "0xcc7a7100"
+    },
+    "command": {
+        "command_length": 20,
+        "command_type": 5,
+        "name": "Splice Insert",
+        "time_specified_flag": true,
+        "pts_time": 40669.732622,
+        "break_auto_return": false,
+        "break_duration": 89.966667,
+        "splice_event_id": 58,
+        "splice_event_cancel_indicator": false,
+        "out_of_network_indicator": false,
+        "program_splice_flag": true,
+        "duration_flag": true,
+        "splice_immediate_flag": false,
+        "event_id_compliance_flag": true,
+        "unique_program_id": 0,
+        "avail_num": 0,
+        "avails_expected": 0
+    },
+    "descriptors": [
+        {
+            "tag": 1,
+            "identifier": "CUEI",
+            "name": "DTMF Descriptor",
+            "descriptor_length": 10,
+            "preroll": 18,
+            "dtmf_count": 4,
+            "dtmf_chars": [
+                "1",
+                "2",
+                "1",
+                "#"
+            ]
+        }
+    ],
+    "packet_data": {
+        "pid": 258,
+        "program": 1,
+        "pcr": 20046.909422,
+        "pts": 20047.689344
+    }
+}
+{
+    "info_section": {
+        "table_id": "0xfc",
+        "section_syntax_indicator": false,
+        "private": false,
+        "sap_type": "0x03",
+        "sap_details": "No Sap Type",
+        "section_length": 59,
+        "protocol_version": 0,
+        "encrypted_packet": false,
+        "encryption_algorithm": 0,
+        "pts_adjustment": 74825.294489,
+        "cw_index": "0x00",
+        "tier": "0x0fff",
+        "splice_command_length": 5,
+        "splice_command_type": 6,
+        "descriptor_loop_length": 37,
+        "crc": "0x74f98fd6"
+    },
+    "command": {
+        "command_length": 5,
+        "command_type": 6,
+        "name": "Time Signal",
+        "time_specified_flag": true,
+        "pts_time": 40669.765956
+    },
+    "descriptors": [
+        {
+            "tag": 2,
+            "identifier": "CUEI",
+            "name": "Segmentation Descriptor",
+            "descriptor_length": 35,
+            "segmentation_event_cancel_indicator": false,
+            "segmentation_event_id": "0x01",
+            "segmentation_event_id_compliance_indicator": true,
+            "program_segmentation_flag": true,
+            "segmentation_duration_flag": false,
+            "delivery_not_restricted_flag": true,
+            "segmentation_message": "Distributor Placement Opportunity End",
+            "segmentation_type_id": 55,
+            "segmentation_upid_length": 20,
+            "segmentation_upid_type": 1,
+            "segmentation_upid_type_name": "Type 0x01 is deprecated, use MPU type 0x0C",
+            "segmentation_upid": "msnbc_EP027437401652",
+            "segment_num": 1,
+            "segments_expected": 1
+        }
+    ],
+    "packet_data": {
+        "pid": 258,
+        "program": 1,
+        "pcr": 20047.009422,
+        "pts": 20047.720578
+    }
+}
+{
+    "info_section": {
+        "table_id": "0xfc",
+        "section_syntax_indicator": false,
+        "private": false,
+        "sap_type": "0x03",
+        "sap_details": "No Sap Type",
+        "section_length": 64,
+        "protocol_version": 0,
+        "encrypted_packet": false,
+        "encryption_algorithm": 0,
+        "pts_adjustment": 74825.294489,
+        "cw_index": "0x00",
+        "tier": "0x00",
+        "splice_command_length": 5,
+        "splice_command_type": 6,
+        "descriptor_loop_length": 42,
+        "crc": "0x8e7ea849"
+    },
+    "command": {
+        "command_length": 5,
+        "command_type": 6,
+        "name": "Time Signal",
+        "time_specified_flag": true,
+        "pts_time": 40669.732622
+    },
+    "descriptors": [
+        {
+            "tag": 2,
+            "identifier": "CUEI",
+            "name": "Segmentation Descriptor",
+            "descriptor_length": 40,
+            "segmentation_event_cancel_indicator": false,
+            "segmentation_event_id": "0xffffffff",
+            "segmentation_event_id_compliance_indicator": true,
+            "program_segmentation_flag": true,
+            "segmentation_duration_flag": true,
+            "delivery_not_restricted_flag": true,
+            "segmentation_duration": 270.0,
+            "segmentation_message": "Break End",
+            "segmentation_type_id": 35,
+            "segmentation_upid_length": 20,
+            "segmentation_upid_type": 1,
+            "segmentation_upid_type_name": "Type 0x01 is deprecated, use MPU type 0x0C",
+            "segmentation_upid": "msnbc_EP027437401652",
+            "segment_num": 2,
+            "segments_expected": 4
+        }
+    ],
+    "packet_data": {
+        "pid": 258,
+        "program": 1,
+        "pcr": 20047.509422,
+        "pts": 20048.271511
+    }
+}
+                                                                                    
+
+
+</pre>
 
 
 </details>
