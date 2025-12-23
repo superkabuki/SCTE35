@@ -4,7 +4,11 @@
 ___
 
 ### [ threefive now supports SRT](srt.md)
-[<img width="1033" height="441" alt="image" src="https://github.com/user-attachments/assets/693d1d62-9304-4e32-a85e-fbafc5c2e16a" />](srt.md)
+
+
+https://github.com/user-attachments/assets/0c7ebdae-df3c-44bd-80ea-336a971004cd
+
+
 <BR>
 
 <BR> _checkout [SRTfu](https://github.com/superkabuki/srtfu)_
