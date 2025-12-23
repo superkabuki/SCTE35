@@ -95,7 +95,7 @@ ___
 
   *  __Sources:__ SCTE35 can read from  strings, files, stdin, http(s), multicast,srt and udp.
 
-|Input     |Output     |Example                                                  |
+|Input     |Output     | How to use                                              |
 |----------|-----------|---------------------------------------------------------|
 |__mpegts__|__base64__ | threefive https://example.com/video.ts  __base64__      |
 |          |           |                                                         |
@@ -110,80 +110,10 @@ ___
 |__json__  |__xml__    | threefive  < json.json  __xml__                         |
 |          |           |                                                         |
 
-### Examples
-
-```py3
-threefive /DAgAAAAAAAAAP/wDwUAAAABf//+AFJlwAABAAAAAMOOklg=
-{
-    "info_section": {
-        "table_id": "0xfc",
-        "section_syntax_indicator": false,
-        "private": false,
-        "sap_type": "0x03",
-        "sap_details": "No Sap Type",
-        "section_length": 32,
-        "protocol_version": 0,
-        "encrypted_packet": false,
-        "encryption_algorithm": 0,
-        "pts_adjustment": 0.0,
-        "cw_index": "0x00",
-        "tier": "0x0fff",
-        "splice_command_length": 15,
-        "splice_command_type": 5,
-        "descriptor_loop_length": 0,
-        "crc": "0xc38e9258"
-    },
-    "command": {
-        "command_length": 15,
-        "command_type": 5,
-        "name": "Splice Insert",
-        "break_auto_return": true,
-        "break_duration": 60.0,
-        "splice_event_id": 1,
-        "splice_event_cancel_indicator": false,
-        "out_of_network_indicator": true,
-        "program_splice_flag": true,
-        "duration_flag": true,
-        "splice_immediate_flag": true,
-        "event_id_compliance_flag": true,
-        "unique_program_id": 1,
-        "avail_num": 0,
-        "avails_expected": 0
-    },
-    "descriptors": []
-}
-
-```
-```py3
-threefive '/DBDAAAAAyiYAP/wFAUAAAABf+//hqqjQv4ApMbEmZkBAQAeAhxDVUVJAAAAAH/AAACky4ABCDEwMTAwMDAwNAAAN7GZ7w==' hex
-
-0xfc304300000003289800fff01405000000017fefff86aaa342fe00a4c6c499990101001e021c43554549000000007fc00000a4cb800108313031303030303034000037b199ef
-```
-```py3
-threefive '/DBDAAAAAyiYAP/wFAUAAAABf+//hqqjQv4ApMbEmZkBAQAeAhxDVUVJAAAAAH/AAACky4ABCDEwMTAwMDAwNAAAN7GZ7w==' int
-
-3717773465930283993605963800158640252450517812792551983039265932573557743354773872531467714927951638320532164168637040831879878514324947096684742008436412775655908940271
-```
-
-```py3
-threefive /DAgAAAAAAAAAP/wDwUAAAABf//+AFJlwAABAAAAAMOOklg= xml
-
-<scte35:SpliceInfoSection xmlns:scte35="https://scte.org/schemas/35"  ptsAdjustment="0" protocolVersion="0" sapType="3" tier="4095">
-   <scte35:SpliceInsert spliceEventId="1" spliceEventCancelIndicator="false" spliceImmediateFlag="true" eventIdComplianceFlag="true" availNum="0" availsExpected="0" outOfNetworkIndicator="true" uniqueProgramId="1">
-      <scte35:BreakDuration autoReturn="true" duration="5400000"/>
-   </scte35:SpliceInsert>
-</scte35:SpliceInfoSection>
-```
-
-
-
-
-
-
 
 * __Additional functionality__ in the threefive cli tool.
 
-| description                              | threefive command                                       |
+| Description                              | How To Use                                       |
 |------------------------------------------|---------------------------------------------------------|
 | Parse HLS for __SCTE35__                 |threefive __hls__ https://example.com/master.m3u8        |
 |                                          |                                                         |
