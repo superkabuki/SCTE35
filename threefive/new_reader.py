@@ -2,20 +2,17 @@
 threefive.new_reader
 
 Home of the reader function
+The reader function returns an object that has a read(numbytes) method.
+reader can read from Stdin, Files, Http(s) Multicast, SRT, and UDP unicast.
 """
 
 import socket
 import struct
 import sys
 import urllib.request
+import srtfu
 from .stuff import blue, ERR, pif
 
-SRT = False
-try:
-    from srtfu import SRTfu, SRTO_TRANSTYPE, SRT_LIVE, SRTO_RCVSYN, SRTO_RCVBUF
-    SRT = True
-except:
-    pass
 
 TIMEOUT = 60
 
@@ -53,27 +50,33 @@ def corsreader(uri, headers={}):
 
 def reader(uri, headers={}):
     """
-    reader returns an open file handle.
+    reader returns an object with a read method.
+
+    reader can read from:
+    -------------------------
+    
     stdin:              cat video.ts | gumd
+
     files:              "/home/you/video.ts"
+
     http(s) urls:       "https://example.com/vid.ts"
      (http headers can be added by setting headers)
+
     udp urls:           "udp://1.2.3.4:5555"
+
     multicast urls:     "udp://@227.1.3.10:4310"
 
+    srt urls:              "srt://10.11.12.13:1415"
+
+
     Use like:
+    ----------
 
     with reader('http://iodisco.com/') as disco:
         disco.read()
 
     with reader('http://iodisco.com/',headers={"myHeader":"DOOM"}) as doom:
         doom.read()
-
-    with reader("udp://@227.1.3.10:4310") as data:
-        data.read(8192)
-
-    with reader("/home/you/video.ts") as data:
-        fu = data.read()
 
     udp_data =reader("udp://1.2.3.4:5555")
     chunks = [udp_data.read(188) for i in range(0,1024)]
@@ -94,7 +97,7 @@ def reader(uri, headers={}):
         req = urllib.request.Request(uri, headers=headers)
         return urllib.request.urlopen(req)
     # SRT
-    if SRT and uri.startswith("srt://"):
+    if uri.startswith("srt://"):
         return do_srt(uri)
     # File
     return open(uri, "rb")
@@ -104,10 +107,10 @@ def do_srt(srt_url):
     """
     do_srt handle Secure Reliable Transport live streams
     """
-    preflags ={SRTO_TRANSTYPE: SRT_LIVE,
-                       SRTO_RCVSYN: 1,
-                       SRTO_RCVBUF: 32768000,}
-    srtf=SRTfu(srt_url, preflags)
+    preflags ={srtfu.SRTO_TRANSTYPE: srtfu.SRT_LIVE,
+                       srtfu.SRTO_RCVSYN: 1,
+                       srtfu.SRTO_RCVBUF: 32768000,}
+    srtf=srtfu.SRTfu(srt_url, preflags)
     srtf.conlive()
     srtf.connect()
     return srtf
